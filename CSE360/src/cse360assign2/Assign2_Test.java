@@ -1,4 +1,4 @@
-package Assign2;
+package cse360assign2;
 import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
 

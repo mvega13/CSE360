@@ -1,4 +1,4 @@
-package Assign2;
+package cse360assign2;
 
 public class SimpleList 
 {
