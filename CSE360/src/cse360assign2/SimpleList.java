@@ -4,9 +4,9 @@ public class SimpleList
 {
 	int array[] = new int[10];
 	int count  = 0;
-	 public SimpleList() 
+	 public SimpleList()
 	  {
-		 //hello
+		 
 	  }
 	 /*
 	   * Add the parameter to the list at the beginning (index = 0). Move all the
@@ -16,12 +16,20 @@ public class SimpleList
 	 
 	  void add(int addIn) 
 	  {
-	    if (array[9] != 0)
-	    	array[9] = 0;
+		
+	    if (count == array.length)
+	    {
+	    	int increBypercent = (int) (( array.length * 0.5) + array.length);
+	    	int newArray[] = new int[increBypercent];
+	    	for(int copyPos  = 0; copyPos < array.length; copyPos++)
+	    		newArray[copyPos] = array[copyPos];
+	    	array = newArray;
+	    	count++;
+	    }
 	    else
 	    	count++;
 	    
-	    for (int move = 9; move > 0; move--)
+	    for (int move = array.length - 1; move > 0; move--)
 	      array[move] = array[move - 1];
 	    
 	    array[0] = addIn;
@@ -34,17 +42,26 @@ public class SimpleList
 	  void remove(int remove) 
 	  {
 	    boolean flag = false;
-	    for (int checker = 0; checker < 10 && flag == false; checker++)	    
+	    for (int checker = 0; checker < array.length && flag == false; checker++)	    
 	    {
 	      if (array[checker] == remove)
 	      {
 	        flag = true;
-	        for (int mover = checker; (mover + 1) < 10; mover++)
-	        {
+	        for (int mover = checker; (mover + 1) < array.length; mover++)
 	        	array[mover] = array[mover + 1];
-	        }
-	        array[9] = 0; 
+	        array[array.length-1] = 0; 
 	        count--;
+	        
+	        if((count) < array.length - (array.length * 0.25))
+	        {
+	        	int decreBypercent = (int) (array.length - (array.length * 0.25));
+		    	int newArray[] = new int[decreBypercent];
+		    	
+	        	for(int copyPos  = 0; copyPos < count; copyPos++)
+		    		newArray[copyPos] = array[copyPos];
+	        	array = newArray;
+	        }
+	        
 	      }
 	    }
 	  }
@@ -69,9 +86,14 @@ public class SimpleList
 	    if(array[0] != 0)
 	    {
 	    	output += array[0];
-	    	for (int printer = 1; printer < 10 && array[printer] != 0; printer++) 
+	    	for (int printer = 1; printer < array.length && array[printer] != 0; printer++) 
 	  	      output += " " + array[printer];
 	    }
+	    else 
+	    {
+	    	output = "There is nothing in the list \n";
+	    }
+	    System.out.println(output);
 	    return output;
 	  }
 
@@ -84,7 +106,7 @@ public class SimpleList
 	  int search(int find) 
 	  {
 	    int count = 0;// the found count is 0 at start
-	    for (int finder = 0; finder < 10; finder++)
+	    for (int finder = 0; finder < array.length; finder++)
 	    {
 	      if (array[finder] == find)
 	    	  count++;
