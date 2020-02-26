@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
 
 public class Assign2_Test {
+	/*
 	@Test
 	  public void testAdd()//Tests the add function and toString
 	  {
@@ -189,6 +190,19 @@ public class Assign2_Test {
 	    assertTrue(-1 == theList.search(10));
 	}
 	@Test
+	public void testFirst()
+	{
+		SimpleList theList = new SimpleList();
+	    theList.add(1);
+	    theList.add(2);
+	    theList.add(3);
+	    theList.add(4);
+	    theList.add(5);
+	    theList.toString();
+	    
+	    assertTrue(5 == theList.first());
+	}
+	@Test
 	public void testSize()
 	{
 		SimpleList theList = new SimpleList();
@@ -197,12 +211,51 @@ public class Assign2_Test {
 	    theList.add(3);
 	    theList.add(4);
 	    theList.add(5);
+
+	    theList.toString();
+	    
+	    assertTrue(5 == theList.size());
+	}
+	*/
+	@Test
+	public void testAppend()//Tests the failure of search
+	{
+		SimpleList theList = new SimpleList();
+	    theList.add(2);
+	    theList.add(3);
+	    theList.add(4);
+	    theList.add(2);
+	    theList.add(6);
+	    theList.add(2);
+	    theList.add(9);
+	    theList.add(2);
+	    theList.append(7);
+	    theList.toString();
+	    
+	    String output = "2 9 2 6 2 4 3 2 7";
+	    assertTrue(output.compareTo(theList.toString())==0);
+	}
+	@Test
+	public void testAppendMore()//Tests the failure of search
+	{
+		SimpleList theList = new SimpleList();
+		theList.add(10);
+	    theList.add(1);
+	    theList.add(2);
+	    theList.add(3);
+	    theList.add(4);
+	    theList.add(2);
 	    theList.add(6);
 	    theList.add(7);
-	    theList.add(8);
+	    theList.add(2);
 	    theList.add(9);
-	    theList.add(10);
 	    theList.toString();
+	    System.out.println(theList.count());
+	    theList.append(5);
+	    
+	    
+	    String output = "9 2 7 6 2 4 3 2 1 10 5";
+	    assertTrue(output.compareTo(theList.toString())==0);
 	}
 
 }

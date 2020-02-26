@@ -9,9 +9,9 @@ public class SimpleList
 		 
 	  }
 	 /*
-	   * Add the parameter to the list at the beginning (index = 0). Move all the
-	   * other integers in the list over so there is room. If the list was full, then
-	   * the last element falls off the list. Increment the count as needed.
+	 * Add the parameter to the list at the beginning (index = 0). Move all the
+	 * other integers in the list over so there is room. If the list was full, then
+	 * the last element falls off the list. Increment the count as needed.
 	 */
 	 
 	  void add(int addIn) 
@@ -117,7 +117,52 @@ public class SimpleList
 	    return count;
 	  }
 	  
-	  
-	 
+	  /*
+	   * The append method should append the parameter to 
+	   * the end of the list.If the list was full, then
+	   * increase the size by 50% so there will be room.
+	   * Increment the count. 
+	   */
+	    void append (int appender)
+	    {
+	      if(count == array.length)//if the count is the same as the array length then there is no free space
+	      {
+	        int increPercent = (int) ((array.length * 0.5) + array.length);// the number of spaces the new array will have as it adds 50% to the orginal length
+	        int newArray[] = new int[increPercent];
+	        for(int copyPos = 0; copyPos < array.length; copyPos++)//copies the old array into the new one
+	          newArray[copyPos] = array[copyPos];
+	        array = newArray;//the old array becomes the original one
+	        array[count] = appender;// adds the number to the end of the list
+	        count++;
+	      }
+	      else//if there is free space then the element is just added and count is updated
+	      {
+	        array[count] = appender;
+	        count++;
+	      }
+	      
+	    }
+
+	    /*
+	    * Return the first element in the list
+	    */
+	    int first()
+	    {
+	      return array[0];
+	    }
+	    /*
+	    * Return the current number of possible locations in
+	    * the list
+	    */
+	    int size()
+	    {
+	      int freespace = 0;//acts as a count for every free space
+	      for(int freepos = 0; freepos < array.length; freepos++)//Loops through the entire array
+	      {
+	        if(array[freepos] == 0)//Every free space is counted
+	          freespace++;
+	      }
+	      return freespace;
+	    }	 
 }
 
