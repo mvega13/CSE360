@@ -3,7 +3,6 @@ import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
 
 public class Assign2_Test {
-	/*
 	@Test
 	  public void testAdd()//Tests the add function and toString
 	  {
@@ -93,6 +92,49 @@ public class Assign2_Test {
 	    
 	    String compare = "2 4 6 8 9";
 	    assertTrue(compare.compareTo(theList.toString())==0);
+	}
+	@Test
+	public void testSize()//Tests if the size() method works
+	{
+		SimpleList theList = new SimpleList();
+	    theList.add(1);
+	    theList.add(2);
+	    theList.add(3);
+	    theList.add(4);
+	    theList.add(5);
+
+	    theList.toString();
+	    
+	    assertTrue(5 == theList.size());
+	}
+	@Test
+	public void testRemoveTooMuch()//Tests the remove function 
+	{
+		SimpleList theList = new SimpleList();
+	    theList.add(10);
+	    theList.add(9);
+	    theList.add(8);
+	    theList.add(7);
+	    theList.add(6);
+	    theList.add(5);
+	    theList.add(4);
+	    theList.add(3);
+	    theList.add(2);
+	    theList.add(1);
+	    theList.toString();
+	    
+	    theList.remove(10);
+	    theList.remove(9);
+	    theList.remove(8);
+	    theList.remove(7);
+	    theList.remove(6);
+	    theList.remove(5);
+	    theList.remove(4);
+	    theList.remove(3);
+	    theList.remove(2);
+	    theList.remove(1);
+	    
+	    assertTrue(1 == theList.size());
 	}
 	@Test
 	public void testRemoveFail()//Tests the remove function 
@@ -190,7 +232,7 @@ public class Assign2_Test {
 	    assertTrue(-1 == theList.search(10));
 	}
 	@Test
-	public void testFirst()
+	public void testFirst()//Sees if the first() method works
 	{
 		SimpleList theList = new SimpleList();
 	    theList.add(1);
@@ -203,7 +245,14 @@ public class Assign2_Test {
 	    assertTrue(5 == theList.first());
 	}
 	@Test
-	public void testSize()
+	public void testFirstFail()//Sees if the first() method fails successfully 
+	{
+		SimpleList theList = new SimpleList();
+	    
+	    assertTrue(-1 == theList.first());
+	}
+	@Test
+	public void testLast()//Sees if the last() method works
 	{
 		SimpleList theList = new SimpleList();
 	    theList.add(1);
@@ -211,12 +260,15 @@ public class Assign2_Test {
 	    theList.add(3);
 	    theList.add(4);
 	    theList.add(5);
-
 	    theList.toString();
 	    
-	    assertTrue(5 == theList.size());
+	    assertTrue(1 == theList.last());
 	}
-	*/
+	public void testLastFail()//Sees if the last() method fails successfully 
+	{
+		SimpleList theList = new SimpleList();
+	    assertTrue(-1 == theList.last());
+	}
 	@Test
 	public void testAppend()//Tests the failure of search
 	{

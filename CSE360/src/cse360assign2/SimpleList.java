@@ -1,5 +1,15 @@
 package cse360assign2;
 
+
+/*
+ * Name : Mario Vega
+ * Class ID: 208
+ * Description: This file is defining the class SimpleList and the different methods
+ *  to modify the class object
+ *  SimpleList acts like a simple list, you can change elements in the list, search for elements, for find what
+ *  are the elements in curtain positions. 
+ */
+
 public class SimpleList 
 {
 	int array[] = new int[10];
@@ -37,7 +47,9 @@ public class SimpleList
 	  
 	  /*
 	   * If the parameter is in the list, then remove it. The other values in the list
-	   * may need to be moved down. Adjust the count as needed.
+	   * may need to be moved down. Adjust the count as needed.If the list has more 
+	   * than 25% empty places, the decrease the size of the list.  The list cannot be 
+	   * reduced to less than 1 entry.
 	   */
 	  void remove(int remove) 
 	  {
@@ -52,21 +64,18 @@ public class SimpleList
 	        array[array.length-1] = 0; 
 	        count--;
 	        
-	        if((count) < array.length - (array.length * 0.25))
+	        if((count) < array.length - (array.length * 0.25) && array.length != 1)//A check of 25% of the array is empty 
 	        {
-	        	int decreBypercent = (int) (array.length - (array.length * 0.25));
+	        	int decreBypercent = (int) (array.length - (array.length * 0.25));//The size of the new amount is calculated
 		    	int newArray[] = new int[decreBypercent];
 		    	
-	        	for(int copyPos  = 0; copyPos < count; copyPos++)
+	        	for(int copyPos  = 0; copyPos < count; copyPos++)// The old array is copied over to the new one
 		    		newArray[copyPos] = array[copyPos];
-	        	array = newArray;
-	        }
-	        
+	        	array = newArray;// the name is transfered to the new array
+	        }        
 	      }
 	    }
-	  }
-	  
-	  
+	  }	  
 	  /*
 	   * Return the number of elements stored in the list.
 	   */
@@ -144,11 +153,24 @@ public class SimpleList
 	    }
 
 	    /*
-	    * Return the first element in the list
+	    * Return the first element in the list.If there are no elements n the list, then return -1.
 	    */
 	    int first()
 	    {
-	      return array[0];
+	    	if(count != 0)
+	    		return array[0];
+	    	else 
+	    		return (-1);
+	    }
+	    /*
+	     * Return the last element in the list.  If there are no elements n the list, then return -1.
+	     */
+	    int last()
+	    {
+	    	if(count != 0)
+	    		return array[count - 1];
+	    	else
+	    		return (-1);
 	    }
 	    /*
 	    * Return the current number of possible locations in
